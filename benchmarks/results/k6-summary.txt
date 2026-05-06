@@ -1,0 +1,155 @@
+k6 load test summary
+
+http_req_duration
+  p(95): 0.416
+  avg: 131.926
+  min: 0.064
+  med: 0.162
+  max: 8007.872
+  p(90): 0.316
+
+parallax_fast_latency_ms
+  avg: 5851.769
+  min: 253.000
+  med: 7456.000
+  max: 8000.000
+  p(90): 8000.000
+  p(95): 8000.000
+
+http_req_sending
+  avg: 0.012
+  min: 0.003
+  med: 0.007
+  max: 4.563
+  p(90): 0.014
+  p(95): 0.016
+
+parallax_error_rate
+  rate: 0.984
+  passes: 17624.000
+  fails: 295.000
+
+iteration_duration
+  max: 8108.853
+  p(90): 101.308
+  p(95): 101.453
+  avg: 232.617
+  min: 100.164
+  med: 100.882
+
+parallax_deep_latency_ms
+  avg: 8000.000
+  min: 8000.000
+  med: 8000.000
+  max: 8000.000
+  p(90): 8000.000
+  p(95): 8000.000
+
+http_req_failed{name:analyze}
+  rate: 0.984
+  passes: 17624.000
+  fails: 295.000
+
+vus
+  min: 1.000
+  max: 50.000
+  value: 2.000
+
+vus_max
+  value: 50.000
+  min: 50.000
+  max: 50.000
+
+http_reqs
+  count: 17919.000
+  rate: 168.354
+
+http_req_blocked
+  max: 3.461
+  p(90): 0.004
+  p(95): 0.004
+  avg: 0.003
+  min: 0.001
+  med: 0.002
+
+checks
+  rate: 0.016
+  passes: 885.000
+  fails: 52872.000
+
+iterations
+  count: 17919.000
+  rate: 168.354
+
+http_req_failed
+  rate: 0.984
+  passes: 17624.000
+  fails: 295.000
+
+http_req_duration{name:analyze}
+  avg: 131.926
+  min: 0.064
+  med: 0.162
+  max: 8007.872
+  p(90): 0.316
+  p(95): 0.416
+
+http_req_duration{expected_response:true}
+  p(95): 8002.263
+  avg: 8001.471
+  min: 8000.467
+  med: 8001.438
+  max: 8007.872
+  p(90): 8002.117
+
+data_received
+  count: 3067445.000
+  rate: 28819.437
+
+http_req_waiting
+  p(95): 0.376
+  avg: 131.894
+  min: 0.053
+  med: 0.133
+  max: 8007.806
+  p(90): 0.282
+
+http_req_receiving
+  min: 0.005
+  med: 0.015
+  max: 4.297
+  p(90): 0.029
+  p(95): 0.033
+  avg: 0.020
+
+parallax_partial_responses
+  rate: 2.772
+  count: 295.000
+
+data_sent
+  count: 30058540.000
+  rate: 282407.740
+
+parallax_fanout_wall_ms
+  min: 8000.000
+  med: 8000.000
+  max: 8000.000
+  p(90): 8000.000
+  p(95): 8000.000
+  avg: 8000.000
+
+http_req_connecting
+  max: 0.273
+  p(90): 0.000
+  p(95): 0.000
+  avg: 0.000
+  min: 0.000
+  med: 0.000
+
+http_req_tls_handshaking
+  avg: 0.000
+  min: 0.000
+  med: 0.000
+  max: 0.000
+  p(90): 0.000
+  p(95): 0.000
