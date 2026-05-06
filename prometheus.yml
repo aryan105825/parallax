@@ -1,0 +1,20 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    project: 'parallax'
+
+scrape_configs:
+  # Rust fan-out engine — exposes /metrics in Prometheus text format
+  - job_name: 'rust-engine'
+    static_configs:
+      - targets: ['rust-engine:3000']
+    metrics_path: /metrics
+    scrape_interval: 15s
+
+  # FastAPI pipeline — exposes /metrics via prometheus-fastapi-instrumentator
+  - job_name: 'pipeline'
+    static_configs:
+      - targets: ['pipeline:8000']
+    metrics_path: /metrics
+    scrape_interval: 15s
