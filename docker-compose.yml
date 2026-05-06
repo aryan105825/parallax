@@ -1,0 +1,61 @@
+services:
+  rust-engine:
+    build:
+      context: ./rust-engine
+    ports:
+      - "3002:3000"
+    env_file:
+      - .env
+    networks:
+      - parallax-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 15s
+
+  pipeline:
+    build:
+      context: ./pipeline
+    ports:
+      - "8003:8000"
+    depends_on:
+      rust-engine:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - parallax-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3003:3000"
+    depends_on:
+      pipeline:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - parallax-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - parallax-network
+
+networks:
+  parallax-network:
+    driver: bridge
