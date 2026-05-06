@@ -1,0 +1,38 @@
+[package]
+name = "rust-engine"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.9"
+crossbeam = "0.8.4"
+dotenvy = "0.15.7"
+metrics = "0.24.5"
+metrics-exporter-prometheus = "0.18.3"
+reqwest = { version = "0.13.3", features = ["json"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+tokio = { version = "1.52.2", features = ["macros", "rt-multi-thread"] }
+tracing = "0.1"
+uuid = "1.23.1"
+
+[dev-dependencies]
+criterion = { version = "0.5.1", features = ["async_tokio", "html_reports"] }
+# wiremock-rs provides an in-process HTTP mock server so benchmarks and
+# integration tests do not require a live Rust engine or live vLLM instances.
+wiremock = "0.6"
+
+# ── Benchmark targets ──────────────────────────────────────────────────────────
+
+# Canonical fan-out throughput benchmark — spec path: src/benches/fanout_throughput.rs
+# Uses wiremock-rs mocks instead of a live localhost:3000 server.
+[[bench]]
+name = "fanout_throughput"
+path = "src/benches/fanout_throughput.rs"
+harness = false
+
+# Legacy gateway bench kept for backward-compatibility with existing CI scripts.
+[[bench]]
+name = "gateway_bench"
+harness = false
+
